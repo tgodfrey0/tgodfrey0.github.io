@@ -9,28 +9,5 @@
   <body>
     <h1>Hello there!</h1>
     <p>I'm Toby</p>
-    <div class="sidebar" style="display:none" id="sidebar">
-      <button class="button" onclick="close()">Close &times;</button>
-      <p>TEST</p>
-    </div>
-    <div id="main">
-      <div class="header">
-        <button id="openSidebar" class="button" onclick="open()">&#9776;</button>
-    </div>
   </body>
-
-  <script>
-    function open() {
-      document.getElementById("main").style.marginLeft = "25%";
-      document.getElementById("mySidebar").style.width = "25%";
-      document.getElementById("mySidebar").style.display = "block";
-      document.getElementById("openNav").style.display = 'none';
-    }
-
-    function close() {
-      document.getElementById("main").style.marginLeft = "0%";
-      document.getElementById("mySidebar").style.display = "none";
-      document.getElementById("openNav").style.display = "inline-block";
-    }
-  </script>
 </html>
