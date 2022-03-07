@@ -81,7 +81,7 @@ $(document).ready(function() {
     typed.typed({
       strings: ["Toby :)"],
       typeSpeed: 10,
-      loop: true,
+      loop: false,
     });
   });
 
