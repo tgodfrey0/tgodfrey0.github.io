@@ -255,18 +255,12 @@ nav ul li a {
   flex-direction: column;
 }
 
-@-webkit-keyframes typing { from { width: 0; } }
-@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
-
 .header-content h1 {
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 10px;
   text-transform: uppercase;
   color: #fff;
-  white-space: nowrap;
-	overflow: hidden;
-	-webkit-animation: typing 2s steps(21, end), blink-caret .5s step-end infinite alternate;
 }
 
 .header-content p {
