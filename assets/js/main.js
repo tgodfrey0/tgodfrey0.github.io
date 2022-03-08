@@ -1,4 +1,5 @@
 /*global $, jQuery, alert*/
+/*
 $(document).ready(function() {
 
   'use strict';
@@ -154,4 +155,15 @@ $(document).ready(function() {
   // Call the functions
   magnifPopup();
 
-});
+});*/
+var i = 0;
+var txt = "Hi, I'm Toby"; /* The text */
+var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("typed").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
