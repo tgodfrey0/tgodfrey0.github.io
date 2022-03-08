@@ -8,7 +8,7 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, speed);
   }
-  setInterval(blink, 5*speed);
+  setInterval(blink, 4*speed);
 }
 
 function blink(){
