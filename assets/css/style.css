@@ -292,6 +292,14 @@ nav ul li a {
   height: auto;
   background: #f7f7f7;
   padding-top: 190px;
+  padding-left: 190px;
+  padding-right: 190px;
+  padding-bottom: 190px;
+}
+
+#about .about-header h1 {
+  color: #494949;
+  font-size: 64px;
 }
 
 #about .div-img-bg {
@@ -308,10 +316,11 @@ nav ul li a {
   object-fit: cover;
 }
 
-#about .about-descr .p-heading {
-  font-family: 'Playfair Display', serif;
-  font-size: 28px;
+#about .about-descr p {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 22px;
   text-align: left;
+  color: #494949
 }
 
 #about .about-descr .separator {
