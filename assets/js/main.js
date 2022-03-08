@@ -1,6 +1,7 @@
 var i = 0;
 var txt = "Hi, I'm Toby"; /* The text */
 var speed = 100; /* The speed/duration of the effect in milliseconds */
+setInterval(blink, 4*speed);
 
 function typeWriter() {
   if (i < txt.length+1) {
@@ -8,7 +9,6 @@ function typeWriter() {
     i++;
     setTimeout(typeWriter, speed);
   }
-  setInterval(blink, 4*speed);
 }
 
 function blink(){
