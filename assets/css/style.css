@@ -8,9 +8,13 @@
 
 /*  General Styling
 /*-----------------------------------------------------------------------------------*/
+hr {
+  color: #494949;
+  width: 80%;
+}
 
 body {
-  background: #ffffff;
+  background: #f7f7f7;
   color: #898989;
   font-family: 'Poppins', helvetica;
   font-size: 15px;
@@ -287,27 +291,26 @@ nav ul li a {
 /*  Aout-us
 /*-----------------------------------------------------------------------------------*/
 
-#about {
+#section {
   width: 100%;
   height: auto;
   background: #f7f7f7;
   padding-top: 190px;
-  padding-bottom: 190px;
   padding-left: 15%;
   padding-right: 15%;
 }
 
-#about .about-header h1 {
+#section .section-title h1 {
   color: #494949;
   font-size: 64px;
 }
 
-#about .div-img-bg {
+#section .div-img-bg {
   padding-bottom: 30px;
   border: 20px solid #b8a07e;
 }
 
-#about .div-img-bg .about-img img {
+#section .div-img-bg .about-img img {
   width: 100%;
   box-shadow: 0px 0px 85px 0px rgba(0, 0, 0, 0.14);
   margin-top: -60px;
@@ -316,17 +319,16 @@ nav ul li a {
   object-fit: cover;
 }
 
-#about .about-descr p {
+#section .section-description p {
   font-family: 'Cutive Mono', monospace;
   font-size: 22px;
   text-align: left;
   color: #494949
 }
 
-#about .about-descr .separator {
-  max-width: 80%;
-  margin-bottom: 0;
-  text-align: left;
+#section .separator {
+  height: 100px;
+  color: black;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -585,6 +587,10 @@ nav ul li a {
   background: #f7f7f7;
   padding-top: 50px;
   padding-bottom: 50px;
+  padding-left: 15%;
+  padding-right: 15%;
+  text-align: center;
+  font-size: 32px;
 }
 
 #footer .socials-media {
