@@ -9,8 +9,10 @@
 /*  General Styling
 /*-----------------------------------------------------------------------------------*/
 hr {
-  color: #494949;
-  width: 80%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #656565;
 }
 
 body {
