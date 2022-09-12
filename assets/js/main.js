@@ -18,3 +18,21 @@ function blink(){
     document.getElementById("typed").innerHTML += "_";
   }
 }
+
+function rusEng(){
+  if(document.getElementById("rus").innerHTML === "Я учил себя русскому языку."){
+    document.getElementById("rus").innerHTML = "I've taught myself Russian.";
+  } else {
+    document.getElementById("rus").innerHTML = "Я учил себя русскому языку.";
+  }
+  document.getElementById("rus").blur();
+}
+
+function manEng(){
+  if(document.getElementById("man").innerHTML === "现在我正在自学汉语。"){
+    document.getElementById("man").innerHTML = "Now I'm self-studying Mandarin Chinese.";
+  } else {
+    document.getElementById("man").innerHTML = "现在我正在自学汉语。";
+  }
+  document.getElementById("man").blur();
+}
