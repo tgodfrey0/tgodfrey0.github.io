@@ -19,6 +19,15 @@ function blink(){
   }
 }
 
+function ukrEng(){
+  if(document.getElementById("ukr").innerHTML === "Я знаю українську мову."){
+    document.getElementById("ukr").innerHTML = "I know Ukrainian.";
+  } else {
+    document.getElementById("ukr").innerHTML = "Я знаю українську мову.";
+  }
+  document.getElementById("ukr").blur();
+}
+
 function rusEng(){
   if(document.getElementById("rus").innerHTML === "Я учил себя русскому языку."){
     document.getElementById("rus").innerHTML = "I've taught myself Russian.";
