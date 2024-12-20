@@ -1,0 +1,182 @@
+<!-- The basis of this code comes from https://github.com/website-template/one-page-website -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Toby Godfrey</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="assets/images/" />
+  </head>
+  <body onload="typeWriter()">
+    <div id="header-placeholder"></div>
+
+    <div id="section">
+      <div id="section-header">
+        <h1>About Me</h1>
+      </div>
+      <div id="section-description" class="section-description">
+        <!-- <p>I'm very interested in computer science and technology, especially low-level components such as kernels and compilers.</p> -->
+        <p>
+          I have a deep interest in Computer Science and Electronics. My main
+          research interests are in multi-robot systems, machine learning and
+          language models.
+        </p>
+
+        <p>
+          I also have a passion for languages.
+          <a id="ukr" href="javascript:;" onclick="ukrEng()"
+            >Я знаю українську мову.</a
+          >
+          <a id="rus" href="javascript:;" onclick="rusEng()"
+            >Я учил себя русскому языку.</a
+          >
+          <a id="man" href="javascript:;" onclick="manEng()"
+            >现在我正在自学汉语。</a
+          >
+        </p>
+
+        <p style="font-size: 15px">
+          <i
+            >Click the text to translate!
+            <a href="https://tgodfrey.com/languages.html"
+              >Or click here to learn more</a
+            ></i
+          >
+        </p>
+      </div>
+      <div class="separator"></div>
+      <div id="section-header">
+        <h1>Education & Experience</h1>
+      </div>
+      <div id="section-description" class="section-description">
+        <p>
+          I am currently studying a PhD in Computer Science at the
+          <a href="https://ecs.soton.ac.uk">University of Southampton</a>. I
+          graduated with First Class Honours in BSc Computer Science from the
+          University of Southampton in 2024 with a weighted average of over 80%.
+          During my Bachelor's, I received multiple prizes including the
+          G-Research Prize for my Part 3 Project.
+        </p>
+
+        <p>
+          I know several programming languages such as C++, C, Java, Python and
+          Rust, and I am familiar with embedded devices. I also have experience
+          developing low-level code and software for highly-constrained systems.
+        </p>
+        <p>
+          I spent a summer in Canada completing a Globalink Research Internship
+          provided by <a href="https://mitacs.ca" target="_blank">Mitacs</a>.
+          This was 12 weeks at
+          <a href="https://lakeheadu.ca" target="_blank">Lakehead University</a>
+          helping to develop tactile sensing modules for autonomous robotic
+          agents. I also spent a summer as a Research Assistant at the
+          <a href="https://southampton.ac.uk" target="_blank"
+            >University of Southampton</a
+          >
+          researching how language models can be used in the context of
+          Multi-Robot Systems.
+        </p>
+        <p>
+          I was also Head of Software for the
+          <a href="https://www.sufst.co.uk/" target="_blank"
+            >Southampton University Formula Student Team</a
+          >
+          for the 2023-2024 academic year.
+        </p>
+      </div>
+      <div class="separator"></div>
+      <!-- <div id="section-header">
+      <h1>Current Projects</h1>
+    </div>
+    <div id="section-description" class="section-description">
+      <p>In the little free time I have, I'm currently working on several projects.</p>
+      <ul>
+        <li><p>I'm also making an embedded weather station to display the weather for the day at my location.</p></li>
+      </ul>
+    </div>
+    <div class="separator"></div> -->
+      <div id="section-header">
+        <h1>Past Projects</h1>
+      </div>
+      <div id="section-description" class="section-description">
+        <p>Here are some projects which I have completed.</p>
+        <ul>
+          <li>
+            <p>
+              As part of the
+              <a href="https://www.sufst.co.uk/" target="_blank"
+                >Southampton University Formula Student Team</a
+              >
+              on a project to develop an interface which allows people to easily
+              read and write parameters to and from the vehicle control unit
+              (VCU).
+            </p>
+          </li>
+          <li>
+            <p>
+              I made a
+              <a
+                href="https://gist.github.com/tgodfrey0/37c5c8b059eb97a510e489ef63d910e8"
+                target="_blank"
+                >Rust cheat sheet</a
+              >
+              to help me learn the language.
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/inventor02/curdle" target="_blank"
+                >Curdle</a
+              >
+              is a clone of a well-known daily word guessing game written in C
+              using SDL2.
+            </p>
+          </li>
+          <li>
+            <p>
+              A custom PCB to interface a
+              <a href="https://www.pjrc.com/teensy/" target="_blank"
+                >Teensy development board</a
+              >
+              with a CAN bus, several LEDs and buttons and other
+              ICs/microcontrollers.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="separator"></div>
+      <div id="section-header">
+        <h1>Contact Me</h1>
+      </div>
+      <div id="section-description" class="section-description">
+        <p>
+          You can find me on
+          <a href="https://www.linkedin.com/in/toby-godfrey">LinkedIn</a> and
+          <a href="https://github.com/tgodfrey0">GitHub</a>, or you can email me
+          at
+          <a href="https://tgodfrey.com/email.html" target="_blank"
+            >me~tgodfrey.com*</a
+          >.
+        </p>
+        <p style="font-size: 15px">
+          <i>*(Formatted correctly with an at-symbol instead of the tilde.)</i>
+        </p>
+      </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/loadContent.js"></script>
+  </body>
+</html>
