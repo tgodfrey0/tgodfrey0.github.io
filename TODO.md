@@ -3,9 +3,9 @@
 - [ ] Change landing image
 - [x] ~Contact page~
   - [x] ~Monospace emails in contact.html~
-- [ ] Projects page
-  - [ ] MARLIN Arxiv link
-  - [ ] MARLIN GitHub link
-  - [ ] SwarmNet
-  - [ ] AAMAS demo
+- [x] ~Projects page~
+  - [x] ~MARLIN Arxiv link~
+  - [x] ~MARLIN GitHub link~
+  - [x] ~SwarmNet~
+  - [x] ~AAMAS demo~
 - [ ] Tutorials page
