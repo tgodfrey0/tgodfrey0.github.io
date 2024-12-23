@@ -114,6 +114,10 @@ body {
   line-height: 1;
 }
 
+tt {
+  font-family: "Source Code Pro", monospace;
+}
+
 ol,
 ul {
   list-style: none;
