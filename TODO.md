@@ -1,6 +1,6 @@
 # TODO
 
-- [ ] Change landing image
+- [x] Change landing image
 - [x] ~Contact page~
   - [x] ~Monospace emails in contact.html~
 - [x] ~Projects page~
