@@ -1,12 +1,7 @@
 <!doctype html>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
-    <title>Toby Godfrey | ROS1 Basics</title>
+    <title>Toby Godfrey | ROS2 Basics</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -20,9 +15,9 @@
       <div class="top">
         <!-- Logo -->
         <div id="logo">
-          <span class="image avatar48"
-            ><img src="/images/avatar.svg" alt=""
-          /></span>
+          <span class="image avatar48">
+            <img src="/images/avatar.svg" alt="" />
+          </span>
           <h1 id="title">Toby Godfrey</h1>
           <p>PhD Student</p>
         </div>
@@ -31,23 +26,23 @@
         <nav id="nav">
           <ul>
             <li>
-              <a href="/index.html" id="home-link"
-                ><span class="icon solid fa-home">Home</span></a
+              <a href="/index.html" id="home-link">
+                <span class="icon solid fa-home">Home</span></a
               >
             </li>
             <li>
-              <a href="/projects.html" id="projects-link"
-                ><span class="icon solid fa-folder">Projects</span></a
+              <a href="/projects.html" id="projects-link">
+                <span class="icon solid fa-folder">Projects</span></a
               >
             </li>
             <li>
-              <a href="/tutorials.html"
-                ><span class="icon solid fa-graduation-cap">Tutorials</span></a
+              <a href="/tutorials.html">
+                <span class="icon solid fa-graduation-cap">Tutorials</span></a
               >
             </li>
             <li>
-              <a href="/contact.html" id="contact-link"
-                ><span class="icon solid fa-envelope">Contact</span></a
+              <a href="/contact.html" id="contact-link">
+                <span class="icon solid fa-envelope">Contact</span></a
               >
             </li>
           </ul>
@@ -78,11 +73,6 @@
               ><span class="label">ORCiD</span></a
             >
           </li>
-          <!-- <li>
-            <a href="#contact" class="icon solid fa-envelope"
-              ><span class="label">Email</span></a
-            >
-          </li> -->
         </ul>
       </div>
     </div>
@@ -93,31 +83,324 @@
       <section id="top" class="one dark cover">
         <div class="container">
           <header>
-            <h2 class="alt">ROS2 Basics.</h2>
+            <h2 class="alt">ROS2 Basics</h2>
             <p>
-              A brief tutorial on the basics of the Robot Operating System 2.
+              A comprehensive tutorial on the basics of the Robot Operating
+              System 2.
             </p>
           </header>
-
-          <!-- <footer>
-            <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-          </footer> -->
         </div>
       </section>
 
-      <!-- Intro -->
+      <!-- Brief -->
       <section id="brief" class="two">
         <div class="container">
           <header>
-            <h2>What is ROS2?</h2>
+            <h2>Brief</h2>
           </header>
 
           <p>
-            TODO.
+            ROS2 (Robot Operating System 2) is the next-generation open-source
+            framework designed to simplify the development of complex robotic
+            systems. It improves on ROS1 with better performance, support for
+            real-time systems, enhanced security, and cross-platform
+            compatibility. This tutorial will guide you through the fundamental
+            concepts of ROS2, its core components, and how to start developing
+            with it.
           </p>
-
+          <p>
+            By the end of this tutorial, you'll understand the basic
+            architecture of ROS2, how to set up a development environment,
+            create and build packages, and implement simple publisher-subscriber
+            communication between nodes.
+          </p>
+        </div>
       </section>
 
+      <!-- Basics -->
+      <section id="basics" class="three">
+        <div class="container">
+          <header>
+            <h2>Basics</h2>
+          </header>
+
+          <h3>1. ROS2 Architecture</h3>
+          <p>
+            ROS2 is built on a decentralized architecture where processing takes
+            place in nodes. Key components include:
+          </p>
+          <ul>
+            <li>
+              <strong>Nodes:</strong> Individual executable programs performing
+              computation.
+            </li>
+            <li>
+              <strong>Topics:</strong> Named channels for publishing and
+              subscribing to messages.
+            </li>
+            <li>
+              <strong>Messages:</strong> Data structures exchanged between
+              nodes.
+            </li>
+            <li>
+              <strong>Services:</strong> Synchronous communication for request
+              and response.
+            </li>
+            <li>
+              <strong>Parameters:</strong> Configuration values for nodes.
+            </li>
+          </ul>
+
+          <h3>2. Setting Up Your Development Environment</h3>
+          <p>
+            Before starting with ROS2, set up your environment. We'll use ROS2
+            Humble, compatible with Ubuntu 22.04.
+          </p>
+          <ol>
+            <li>
+              Install ROS2 by following the official
+              <a href="https://docs.ros.org/en/humble/Installation.html"
+                >installation guide</a
+              >.
+            </li>
+            <li>Set up your ROS2 workspace:</li>
+          </ol>
+          <pre><code>mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/
+colcon build
+source install/setup.bash</code></pre>
+          <p>Add the source command to your ~/.bashrc file:</p>
+          <pre><code>echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+          <h3>3. Creating a ROS2 Package</h3>
+          <p>
+            In ROS2, software is organized in packages. Create a new package:
+          </p>
+          <pre><code>cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python my_first_package</code></pre>
+          <p>
+            This creates a Python-based ROS2 package named "my_first_package."
+          </p>
+
+          <h3>4. Writing a Simple Publisher Node</h3>
+          <p>
+            Create a publisher node that sends a "Hello, ROS2!" message every
+            second. Edit the
+            <ilcode>my_first_package/publisher.py</ilcode> file:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalPublisher(Node):
+
+  def __init__(self):
+    super().__init__('minimal_publisher')
+    self.publisher_ = self.create_publisher(String, 'topic', 10)
+    self.timer = self.create_timer(1.0, self.timer_callback)
+
+  def timer_callback(self):
+    msg = String()
+    msg.data = 'Hello, ROS2!'
+    self.get_logger().info(f'Publishing: "{msg.data}"')
+    self.publisher_.publish(msg)
+
+def main(args=None):
+  rclpy.init(args=args)
+  minimal_publisher = MinimalPublisher()
+  rclpy.spin(minimal_publisher)
+  minimal_publisher.destroy_node()
+  rclpy.shutdown()
+
+if __name__ == '__main__':
+  main()</code></pre>
+
+          <h3>5. Writing a Simple Subscriber Node</h3>
+          <p>
+            Create a subscriber node that listens for messages on the 'topic'
+            channel. Edit the
+            <ilcode>my_first_package/subscriber.py</ilcode> file:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class MinimalSubscriber(Node):
+
+  def __init__(self):
+    super().__init__('minimal_subscriber')
+    self.subscription = self.create_subscription(
+      String,
+      'topic',
+      self.listener_callback,
+      10)
+
+  def listener_callback(self, msg):
+    self.get_logger().info(f'I heard: "{msg.data}"')
+
+def main(args=None):
+  rclpy.init(args=args)
+  minimal_subscriber = MinimalSubscriber()
+  rclpy.spin(minimal_subscriber)
+  minimal_subscriber.destroy_node()
+  rclpy.shutdown()
+
+if __name__ == '__main__':
+  main()</code></pre>
+
+          <h3>6. Building and Running Your ROS2 Nodes</h3>
+          <p>Build your package and run the nodes:</p>
+          <pre><code>cd ~/ros2_ws
+colcon build</code></pre>
+          <p>Run the publisher node:</p>
+          <pre><code>ros2 run my_first_package publisher</code></pre>
+          <p>Run the subscriber node:</p>
+          <pre><code>ros2 run my_first_package subscriber</code></pre>
+        </div>
+      </section>
+
+      <!-- Advanced Features -->
+      <section id="advanced" class="four">
+        <div class="container">
+          <header>
+            <h2>Advanced Features</h2>
+          </header>
+
+          <h3>1. Launch Files</h3>
+          <p>
+            Launch files simplify starting multiple nodes. Create a launch file
+            in your package's <ilcode>launch</ilcode> directory:
+          </p>
+          <pre><code>mkdir ~/ros2_ws/src/my_first_package/launch
+nano ~/ros2_ws/src/my_first_package/launch/example.launch.py</code></pre>
+          <p>Add this content:</p>
+          <pre><code>from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+  return LaunchDescription([
+    Node(
+      package='my_first_package',
+      executable='publisher',
+      output='screen'
+    ),
+    Node(
+      package='my_first_package',
+      executable='subscriber',
+      output='screen'
+    )
+  ])</code></pre>
+          <p>Run the launch file:</p>
+          <pre><code>ros2 launch my_first_package example.launch.py</code></pre>
+
+          <h3>2. Using Services in ROS2</h3>
+          <p>
+            Services in ROS2 allow for request-response communication between
+            nodes. Here's how to create a service:
+          </p>
+          <pre><code>ros2 interface show example_interfaces/srv/AddTwoInts</code></pre>
+          <p>
+            Define a service in your package, for example, an AddTwoInts
+            service:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from example_interfaces.srv import AddTwoInts
+
+class AddTwoIntsService(Node):
+
+  def __init__(self):
+    super().__init__('add_two_ints_service')
+    self.srv = self.create_service(AddTwoInts, 'add_two_ints', self.add_two_ints_callback)
+
+  def add_two_ints_callback(self, request, response):
+    response.sum = request.a + request.b
+    self.get_logger().info(f'Received: {request.a} + {request.b} = {response.sum}')
+    return response
+
+def main(args=None):
+  rclpy.init(args=args)
+  service = AddTwoIntsService()
+  rclpy.spin(service)
+  service.destroy_node()
+  rclpy.shutdown()
+
+if __name__ == '__main__':
+  main()</code></pre>
+
+          <p>Run the service and a client to test it.</p>
+
+          <h3>3. Alternative ROS Middleware</h3>
+          <p>
+            ROS2 supports multiple DDS (Data Distribution Service)
+            implementations. Some common DDS implementations include:
+          </p>
+          <ul>
+            <li><strong>Fast-DDS:</strong> Default middleware for ROS2.</li>
+            <li>
+              <strong>RTI Connext:</strong> A commercial DDS implementation with
+              high performance.
+            </li>
+            <li>
+              <strong>Cyclone DDS:</strong> A lightweight and open-source
+              implementation.
+            </li>
+          </ul>
+          <p>
+            To switch middleware, set the
+            <ilcode>RMW_IMPLEMENTATION</ilcode> environment variable:
+          </p>
+          <pre><code>export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</code></pre>
+          <p>
+            For more advanced middleware configurations, you can provide an XML
+            configuration file, such as <ilcode>cyclonedds.xml</ilcode>, to
+            customize settings like participant QoS, logging, and network
+            settings. Place the configuration file in the working directory or
+            specify its path with the
+            <ilcode>CYCLONEDDS_URI</ilcode> environment variable:
+          </p>
+          <pre><code>export CYCLONEDDS_URI=file:///path/to/cyclonedds.xml</code></pre>
+          <p>
+            Refer to the Cyclone DDS documentation for details on creating a
+            valid <ilcode>cyclonedds.xml</ilcode> file.
+          </p>
+        </div>
+      </section>
+
+      <!-- Additional Resources -->
+      <section id="resources" class="two">
+        <div class="container">
+          <header>
+            <h2>Additional Resources</h2>
+          </header>
+
+          <ul>
+            <li>
+              <a href="https://docs.ros.org/en/">ROS2 Documentation</a> - The
+              official ROS2 resources and guides.
+            </li>
+            <li>
+              <a href="https://answers.ros.org/">ROS Answers</a> - Community Q&A
+              forum for ROS.
+            </li>
+            <li>
+              <a href="https://github.com/ros2">ROS2 GitHub</a> - Source code
+              for ROS2 packages.
+            </li>
+            <li>
+              <a href="https://index.ros.org/">ROS Index</a> - A searchable
+              database of ROS2 packages.
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
@@ -135,6 +418,5 @@
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
   </body>
 </html>

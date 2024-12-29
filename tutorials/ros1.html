@@ -1,9 +1,4 @@
 <!doctype html>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
     <title>Toby Godfrey | ROS1 Basics</title>
@@ -78,11 +73,6 @@
               ><span class="label">ORCiD</span></a
             >
           </li>
-          <!-- <li>
-            <a href="#contact" class="icon solid fa-envelope"
-              ><span class="label">Email</span></a
-            >
-          </li> -->
         </ul>
       </div>
     </div>
@@ -93,31 +83,390 @@
       <section id="top" class="one dark cover">
         <div class="container">
           <header>
-            <h2 class="alt">ROS1 Basics.</h2>
+            <h2 class="alt">ROS1 Basics</h2>
             <p>
-              A brief tutorial on the basics of the Robot Operating System 1.
+              A comprehensive tutorial on the basics of the Robot Operating
+              System 1.
             </p>
           </header>
-
-          <!-- <footer>
-            <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-          </footer> -->
         </div>
       </section>
 
-      <!-- Intro -->
+      <!-- Brief -->
       <section id="brief" class="two">
         <div class="container">
           <header>
-            <h2>What is ROS1?</h2>
+            <h2>Brief</h2>
           </header>
 
           <p>
-            TODO.
+            ROS1 (Robot Operating System 1) is an open-source framework designed
+            to simplify the development of complex robotic systems. It provides
+            a rich set of tools, libraries, and conventions that enable
+            developers to create robust and scalable robot applications. This
+            tutorial will guide you through the fundamental concepts of ROS1,
+            its core components, and how to start developing with it.
           </p>
-
+          <p>
+            By the end of this tutorial, you'll understand the basic
+            architecture of ROS1, how to set up a development environment,
+            create and build packages, and implement simple publisher-subscriber
+            communication between nodes.
+          </p>
+        </div>
       </section>
 
+      <!-- Basics -->
+      <section id="basics" class="three">
+        <div class="container">
+          <header>
+            <h2>Basics</h2>
+          </header>
+
+          <h3>1. ROS1 Architecture</h3>
+          <p>
+            ROS1 is built on a graph-based architecture where processing takes
+            place in nodes that may receive, post, and multiplex sensor data,
+            control, state, planning, actuator, and other messages. The key
+            concepts in ROS1 are:
+          </p>
+          <ul>
+            <li>
+              <strong>Nodes:</strong> Executable programs that perform
+              computation.
+            </li>
+            <li>
+              <strong>Topics:</strong> Named buses over which nodes exchange
+              messages.
+            </li>
+            <li>
+              <strong>Messages:</strong> ROS data type used when subscribing or
+              publishing to a topic.
+            </li>
+            <li>
+              <strong>Services:</strong> Request/reply interactions between
+              nodes.
+            </li>
+            <li>
+              <strong>Master:</strong> Name service for ROS (i.e., helps nodes
+              find each other).
+            </li>
+            <li>
+              <strong>Parameter Server:</strong> A shared, multi-variate
+              dictionary that nodes can use to store and retrieve parameters at
+              runtime.
+            </li>
+          </ul>
+
+          <h3>2. Setting Up Your Development Environment</h3>
+          <p>
+            Before we start developing with ROS1, we need to set up our
+            environment. We'll use ROS Noetic, which is designed for Ubuntu
+            20.04.
+          </p>
+          <ol>
+            <li>
+              Install ROS Noetic by following the official installation guide.
+            </li>
+            <li>Set up your catkin workspace:</li>
+          </ol>
+          <pre><code>mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+source devel/setup.bash</code></pre>
+          <p>
+            Add the source command to your ~/.bashrc file to automatically set
+            up your environment for ROS development:
+          </p>
+          <pre><code>echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+          <h3>3. Creating a ROS Package</h3>
+          <p>
+            In ROS, software is organized in packages. Let's create a simple
+            package:
+          </p>
+          <pre><code>cd ~/catkin_ws/src
+catkin_create_pkg my_first_package rospy std_msgs</code></pre>
+          <p>
+            This creates a new package named "my_first_package" with
+            dependencies on rospy (Python client library for ROS) and std_msgs
+            (standard message types).
+          </p>
+
+          <h3>4. Writing a Simple Publisher Node</h3>
+          <p>
+            Let's create a simple publisher node that sends a "Hello, ROS!"
+            message every second. Create a new file named `talker.py` in the
+            `scripts` directory of your package:
+          </p>
+          <pre><code>mkdir ~/catkin_ws/src/my_first_package/scripts
+cd ~/catkin_ws/src/my_first_package/scripts
+touch talker.py
+chmod +x talker.py</code></pre>
+          <p>
+            Open `talker.py` in your favorite text editor and add the following
+            code:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+
+def talker():
+  pub = rospy.Publisher('chatter', String, queue_size=10)
+  rospy.init_node('talker', anonymous=True)
+  rate = rospy.Rate(1) # 1 Hz
+  while not rospy.is_shutdown():
+    hello_str = "Hello, ROS! %s" % rospy.get_time()
+    rospy.loginfo(hello_str)
+    pub.publish(hello_str)
+    rate.sleep()
+
+if __name__ == '__main__':
+  try:
+    talker()
+  except rospy.ROSInterruptException:
+    pass</code></pre>
+
+          <h3>5. Writing a Simple Subscriber Node</h3>
+          <p>
+            Now, let's create a subscriber node that listens for messages on the
+            'chatter' topic. Create a new file named `listener.py`:
+          </p>
+          <pre><code>touch listener.py
+chmod +x listener.py</code></pre>
+          <p>Add the following code to `listener.py`:</p>
+          <pre><code>#!/usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+
+def callback(data):
+  rospy.loginfo(rospy.get_caller_id() + "I heard %s", data.data)
+
+def listener():
+  rospy.init_node('listener', anonymous=True)
+  rospy.Subscriber("chatter", String, callback)
+  rospy.spin()
+
+if __name__ == '__main__':
+  listener()</code></pre>
+
+          <h3>6. Building and Running Your ROS Nodes</h3>
+          <p>
+            Now that we have our nodes, let's build the package and run them:
+          </p>
+          <ol>
+            <li>Build the package:</li>
+          </ol>
+          <pre><code>cd ~/catkin_ws
+catkin_make</code></pre>
+          <ol start="2">
+            <li>In a new terminal, start the ROS master:</li>
+          </ol>
+          <pre><code>roscore</code></pre>
+          <ol start="3">
+            <li>In another terminal, run the talker node:</li>
+          </ol>
+          <pre><code>rosrun my_first_package talker.py</code></pre>
+          <ol start="4">
+            <li>In a third terminal, run the listener node:</li>
+          </ol>
+          <pre><code>rosrun my_first_package listener.py</code></pre>
+          <p>
+            You should now see the talker publishing messages and the listener
+            receiving them!
+          </p>
+        </div>
+      </section>
+
+      <!-- Advanced Features -->
+      <section id="advanced" class="four">
+        <div class="container">
+          <header>
+            <h2>Advanced Features</h2>
+          </header>
+
+          <h3>1. Launch Files</h3>
+          <p>
+            Launch files allow you to start multiple nodes at once. Create a
+            file named `talker_listener.launch` in the `launch` directory of
+            your package:
+          </p>
+          <pre><code>mkdir ~/catkin_ws/src/my_first_package/launch
+cd ~/catkin_ws/src/my_first_package/launch
+touch talker_listener.launch</code></pre>
+          <p>Add the following content to the launch file:</p>
+          <pre><code>#!/usr/bin/env python
+import rospy
+import roslaunch
+
+def launch():
+  rospy.init_node('launch_node', anonymous=True)
+  launch = roslaunch.scriptapi.ROSLaunch()
+  launch.start()
+  talker_node = roslaunch.core.Node(
+    package='my_first_package',
+    node_type='talker.py',
+    name='talker',
+    output='screen'
+  )
+
+  listener_node = roslaunch.core.Node(
+    package='my_first_package',
+    node_type='listener.py',
+    name='listener',
+    output='screen'
+  ) launch.launch(talker_node)
+
+  launch.launch(listener_node)
+  rospy.spin()
+
+if __name__ == '__main__':
+  launch() </code></pre>
+          <p>Now you can launch both nodes with a single command:</p>
+          <pre><code>roslaunch my_first_package talker_listener.launch</code></pre>
+
+          <h3>2. ROS Parameters</h3>
+          <p>
+            ROS parameters allow you to set and get global variables. Let's
+            modify our talker to use a parameter for the publishing rate:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rospy
+from std_msgs.msg import String
+
+def talker():
+  pub = rospy.Publisher('chatter', String, queue_size=10)
+  rospy.init_node('talker', anonymous=True)
+  rate = rospy.Rate(rospy.get_param('~rate', 1))  # Default to 1 Hz if not specified
+  while not rospy.is_shutdown():
+    hello_str = "Hello, ROS! %s" % rospy.get_time()
+    rospy.loginfo(hello_str)
+    pub.publish(hello_str)
+    rate.sleep()
+
+if __name__ == '__main__':
+    try:
+      talker()
+  except rospy.ROSInterruptException:
+      pass</code></pre>
+          <p>Now you can set the rate when launching the node:</p>
+          <pre><code>rosrun my_first_package talker.py _rate:=2</code></pre>
+
+          <h3>3. ROS Services</h3>
+          <p>
+            Services allow request/reply interactions between nodes. Let's
+            create a simple service that adds two numbers:
+          </p>
+          <pre><code>#!/usr/bin/env python3
+
+import rospy
+from my_first_package.srv import AddTwoInts, AddTwoIntsResponse
+
+def handle_add_two_ints(req):
+  result = req.a + req.b
+  rospy.loginfo("Returning [%s + %s = %s]"%(req.a, req.b, result))
+  return AddTwoIntsResponse(result)
+
+def add_two_ints_server():
+  rospy.init_node('add_two_ints_server')
+  s = rospy.Service('add_two_ints', AddTwoInts, handle_add_two_ints)
+  rospy.loginfo("Ready to add two ints.")
+  rospy.spin()
+
+if __name__ == "__main__":
+  add_two_ints_server()</code></pre>
+          <p>
+            You'll need to create a service definition file and modify your
+            <ilcode>package.xml</ilcode> and <ilcode>CMakeLists.txt</ilcode> to use custom services. Below is an
+            example of a service definition file for the AddTwoInts service used
+            in the previous example:
+          </p>
+          <pre><code># Request
+int64 a
+int64 b
+
+---
+# Response
+int64 sum</code></pre>
+          <p>
+            To use this service, you need to update your <ilcode>CMakeLists.txt</ilcode> and
+            <ilcode>package.xml</ilcode> files as follows:
+          </p>
+
+          <pre><code>find_package(catkin REQUIRED COMPONENTS
+rospy
+std_msgs
+message_generation
+)
+
+add_service_files(
+  FILES
+  AddTwoInts.srv
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+catkin_package(
+  CATKIN_DEPENDS message_runtime
+)</code></pre>
+          <pre><code>&lt;build_depend&gt;message_generation&lt;/build_depend&gt;
+  &lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;
+          </code></pre>
+          <p>
+            After making these changes, rebuild your package then you can use
+            the AddTwoInts service in your nodes.
+          </p>
+        </div>
+      </section>
+
+      <!-- Additional Resources -->
+      <section id="resources" class="two">
+        <div class="container">
+          <header>
+            <h2>Additional Resources</h2>
+          </header>
+
+          <ul>
+            <li>
+              <a href="http://wiki.ros.org/">ROS Wiki</a> - The official ROS
+              documentation, tutorials, and API references.
+            </li>
+            <li>
+              <a href="https://www.ros.org/">ROS.org</a> - The main website for
+              the ROS community, news, and resources.
+            </li>
+            <li>
+              <a href="https://answers.ros.org/">ROS Answers</a> - A Q&A forum
+              for ROS users and developers.
+            </li>
+            <li>
+              <a href="https://discourse.ros.org/">ROS Discourse</a> - The
+              official discussion forum for ROS.
+            </li>
+            <li>
+              <a href="https://www.youtube.com/user/rosorg"
+                >ROS YouTube Channel</a
+              >
+              - Video tutorials and talks about ROS.
+            </li>
+            <li>
+              <a href="https://github.com/ros">ROS GitHub Organization</a> -
+              Source code for ROS packages and tools.
+            </li>
+            <li>
+              <a href="https://index.ros.org/">ROS Index</a> - A searchable
+              database of ROS packages.
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
@@ -135,6 +484,5 @@
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
   </body>
 </html>
