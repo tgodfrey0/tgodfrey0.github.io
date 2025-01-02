@@ -1,12 +1,7 @@
 <!doctype html>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
-    <title>Toby Godfrey | Tutorials</title>
+    <title>Toby Godfrey | ROS2 CycloneDDS</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -20,9 +15,9 @@
       <div class="top">
         <!-- Logo -->
         <div id="logo">
-          <span class="image avatar48"
-            ><img src="/images/avatar.svg" alt=""
-          /></span>
+          <span class="image avatar48">
+            <img src="/images/avatar.svg" alt="" />
+          </span>
           <h1 id="title">Toby Godfrey</h1>
           <p>PhD Student</p>
         </div>
@@ -31,23 +26,23 @@
         <nav id="nav">
           <ul>
             <li>
-              <a href="/index.html" id="home-link"
-                ><span class="icon solid fa-home">Home</span></a
+              <a href="/index.html" id="home-link">
+                <span class="icon solid fa-home">Home</span></a
               >
             </li>
             <li>
-              <a href="/projects.html" id="projects-link"
-                ><span class="icon solid fa-folder">Projects</span></a
+              <a href="/projects.html" id="projects-link">
+                <span class="icon solid fa-folder">Projects</span></a
               >
             </li>
             <li>
-              <a href="/tutorials.html"
-                ><span class="icon solid fa-graduation-cap">Tutorials</span></a
+              <a href="/tutorials.html">
+                <span class="icon solid fa-graduation-cap">Tutorials</span></a
               >
             </li>
             <li>
-              <a href="/contact.html" id="contact-link"
-                ><span class="icon solid fa-envelope">Contact</span></a
+              <a href="/contact.html" id="contact-link">
+                <span class="icon solid fa-envelope">Contact</span></a
               >
             </li>
           </ul>
@@ -78,11 +73,6 @@
               ><span class="label">ORCiD</span></a
             >
           </li>
-          <!-- <li>
-            <a href="#contact" class="icon solid fa-envelope"
-              ><span class="label">Email</span></a
-            >
-          </li> -->
         </ul>
       </div>
     </div>
@@ -93,15 +83,11 @@
       <section id="top" class="one dark cover">
         <div class="container">
           <header>
-            <h2 class="alt">Robotics Tutorials.</h2>
+            <h2 class="alt">ROS2 with CycloneDDS.</h2>
             <p>
-              Below are some tutorials for various aspects of robotics and machine learning.
+              A brief discussion on using the CycloneDDS middleware with ROS2.
             </p>
           </header>
-
-          <!-- <footer>
-            <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-          </footer> -->
         </div>
       </section>
 
@@ -113,27 +99,25 @@
           </header>
 
           <p>
-            This page contains links to tutorials for various aspects of the development of robotic systems. There is no logic behind what the tutorials are about, but if you feel something is missing please <a href="contact.html">contact me</a>.
+            ROS2 supports multiple DDS (Data Distribution Service)
+            implementations. Some common DDS implementations include:
           </p>
-
-      </section>
-
-      <!-- ROS Tutorials -->
-      <section id="ros-tutorials" class="three">
-        <div class="container">
-          <header>
-            <h2>Robot Operating System Tutorials</h2>
-          </header>
-
-          <!-- <a href="#" class="image featured"
-            ><img src="/images/pic08.jpg" alt=""
-          /></a> -->
-
           <ul>
-            <li><a href="tutorials/ros1.html">ROS1 Basics</a></li>
-            <li><a href="tutorials/ros2.html">ROS2 Basics</a></li>
-            <li><a href="tutorials/ros2_cyclonedds.html">ROS2 with CycloneDDS</a></li>
+            <li><strong>Fast-DDS:</strong> Default middleware for ROS2.</li>
+            <li>
+              <strong>RTI Connext:</strong> A commercial DDS implementation with
+              high performance.
+            </li>
+            <li>
+              <strong>Cyclone DDS:</strong> A lightweight and open-source
+              implementation.
+            </li>
           </ul>
+          <p>
+            This tutorial focuses on using CycloneDDS due to the following
+            reasons: (1) many commerial robotic systems (e.g., the Go2 from
+            Unitree Robotics), and (2) my past experience with it.
+          </p>
         </div>
       </section>
     </div>
@@ -153,6 +137,5 @@
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
   </body>
 </html>
