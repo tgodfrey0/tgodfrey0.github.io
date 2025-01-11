@@ -1,19 +1,15 @@
 <!doctype html>
-<!--
-	Prologue by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
   <head>
-    <title>Toby Godfrey | Tutorials</title>
+    <title>Toby Godfrey | TODO</title>
+    <!-- TODO -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="/assets/highlight/styles/default.min.css" />
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -52,6 +48,30 @@
               >
             </li>
           </ul>
+          <hr width="80%" />
+          <!-- Other Tutorials -->
+          <h1>All Tutorials</h1>
+          <h2>ROS</h2>
+          <ul>
+            <li>
+              <a href="/tutorials/ros/ros1.html"
+                ><span class="icon solid fa-robot">ROS1 Basics</span></a
+              >
+            </li>
+            <li>
+              <a href="/tutorials/ros/ros2.html"
+                ><span class="icon solid fa-robot">ROS2 Basics</span></a
+              >
+            </li>
+            <li>
+              <a href="/tutorials/ros/ros2_cyclonedds.html"
+                ><span class="icon solid fa-robot"
+                  >ROS2 with CycloneDDS</span
+                ></a
+              >
+            </li>
+            <!-- TODO Add new page -->
+          </ul>
         </nav>
       </div>
 
@@ -79,11 +99,6 @@
               ><span class="label">ORCiD</span></a
             >
           </li>
-          <!-- <li>
-            <a href="#contact" class="icon solid fa-envelope"
-              ><span class="label">Email</span></a
-            >
-          </li> -->
         </ul>
       </div>
     </div>
@@ -94,15 +109,11 @@
       <section id="top" class="one dark cover">
         <div class="container">
           <header>
-            <h2 class="alt">Robotics Tutorials.</h2>
-            <p>
-              Below are some tutorials for various aspects of robotics and machine learning.
-            </p>
+            <h2 class="alt">Title.</h2>
+            <!-- TODO -->
+            <p>A one sentence description.</p>
+            <!-- TODO -->
           </header>
-
-          <!-- <footer>
-            <a href="#portfolio" class="button scrolly">Magna Aliquam</a>
-          </footer> -->
         </div>
       </section>
 
@@ -113,28 +124,30 @@
             <h2>Brief</h2>
           </header>
 
-          <p>
-            This page contains links to tutorials for various aspects of the development of robotic systems. There is no logic behind what the tutorials are about, but if you feel something is missing please <a href="contact.html">contact me</a>.
-          </p>
-
-
+          <p></p>
+        </div>
       </section>
 
-      <!-- ROS Tutorials -->
-      <section id="ros-tutorials" class="three">
+      <!-- Section -->
+      <section id="section" class="three">
         <div class="container">
           <header>
-            <h2>Robot Operating System Tutorials</h2>
+            <h2>Section</h2>
           </header>
 
-          <!-- <a href="#" class="image featured"
-            ><img src="/images/pic08.jpg" alt=""
-          /></a> -->
+          <p></p>
+        </div>
+      </section>
+
+      <!-- Additional Resources -->
+      <section id="resources" class="two">
+        <div class="container">
+          <header>
+            <h2>Additional Resources</h2>
+          </header>
 
           <ul>
-            <li><a href="/tutorials/ros/ros1.html">ROS1 Basics</a></li>
-            <li><a href="/tutorials/ros/ros2.html">ROS2 Basics</a></li>
-            <li><a href="/tutorials/ros/ros2_cyclonedds.html">ROS2 with CycloneDDS</a></li>
+            <li><a href="">Site</a> - Desc.</li>
           </ul>
         </div>
       </section>
@@ -155,6 +168,24 @@
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Highlight code blocks
+        document.querySelectorAll("pre code").forEach((el) => {
+          hljs.highlightElement(el);
+        });
+
+        // Highlight inline code
+        document.querySelectorAll(":not(pre) > code").forEach((el) => {
+          el.classList.add("hljs");
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   </body>
 </html>
