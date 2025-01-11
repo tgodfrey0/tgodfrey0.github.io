@@ -221,8 +221,15 @@ source ~/.bashrc</code></pre>
             middleware. To check it is using the correct DDS system, simply run
             <code>ros2 doctor --report</code>.
           </p>
+        </div>
+      </section>
 
-          <h3>CycloneDDS Customisation</h3>
+      <!-- Customisation -->
+      <section id="resources" class="four">
+        <div class="container">
+          <header>
+            <h2>Configuration</h2>
+          </header>
 
           <p>
             CycloneDDS allows the specification of the network interface on
@@ -269,6 +276,32 @@ source ~/.bashrc</code></pre>
           </p>
 
           <pre><code>echo "export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;&lt;NetworkInterface name=\"wlan0\" priority=\"default\" multicast=\"default\" /&gt;&lt;NetworkInterface name=\"eth0\" priority=\"default\" multicast=\"default\" /&gt;&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;'" >> ~/.bashrc</code></pre>
+        </div>
+      </section>
+
+      <!-- Additional Resources -->
+      <section id="resources" class="two">
+        <div class="container">
+          <header>
+            <h2>Additional Resources</h2>
+          </header>
+
+          <ul>
+            <li>
+              <a
+                href="https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Different-Middleware-Vendors.html"
+                >ROS2 Alternative Middleware</a
+              >
+              - The official ROS2 resources on changing the middleware provider.
+            </li>
+            <li>
+              <a
+                href="https://cyclonedds.io/docs/cyclonedds/latest/config/index.html"
+                >CycloneDDS Configuration</a
+              >
+              - Official documentation on how to configure CycloneDDS.
+            </li>
+          </ul>
         </div>
       </section>
     </div>
