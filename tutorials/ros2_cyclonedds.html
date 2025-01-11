@@ -54,12 +54,12 @@
           <ul>
             <li>
               <a href="/tutorials/ros1.html"
-                ><span class="icon solid fa-robot">ROS1</span></a
+                ><span class="icon solid fa-robot">ROS1 Basics</span></a
               >
             </li>
             <li>
               <a href="/tutorials/ros2.html"
-                ><span class="icon solid fa-robot">ROS2</span></a
+                ><span class="icon solid fa-robot">ROS2 Basics</span></a
               >
             </li>
             <li>
@@ -162,7 +162,7 @@
           <p>
             We can easily install the CycloneDDS ROS2 middleware using your
             system's package manager. For systems using <code>apt</code>, we can
-            simply run. <code>def new_fun(i: int):</code>
+            simply run.
           </p>
 
           <pre><code>sudo apt install ros-$ROS_DISTRO-rmw-cyclonedds-cpp</code></pre>
@@ -176,7 +176,7 @@
 
           <p>
             In order to install a specific version, we can install CycloneDDS
-            from source. First, ensure that ROS2 has <b>not</b> been sourced.
+            from source. First, ensure that ROS2 has not been sourced.
           </p>
 
           <pre><code># Create a CycloneDDS workspace and download sources
@@ -189,6 +189,86 @@ cd ~/cyclonedds_ws
 colcon build --packages-select cyclonedds
 source /opt/ros/${ROS_DISTRO}/setup.bash
 colcon build</code></pre>
+
+          <p>
+            Before we can use the package, ROS needs to know that CycloneDDS is
+            the desired middleware. This is done through an environment
+            variable.
+          </p>
+
+          <pre><code>export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp</code></pre>
+
+          <p>
+            It is recommended to set this automatically, for example in
+            <code class="language-nohighlight">~/.bashrc</code>.
+          </p>
+
+          <pre><code>echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+          <p>
+            Now that the package has been built and ROS know to use it, the
+            package needs to be sourced. Similar to the environment variable,
+            it's recommended to source this wherever you source your ROS
+            installation (often in
+            <code class="language-nohighlight">~/.bashrc</code>).
+          </p>
+
+          <pre><code>echo "source ~/cyclonedds_ws/install/setup.bash" >> ~/.bashrc</code></pre>
+
+          <p>
+            ROS should now be using the required version of CycloneDDS as its
+            middleware. To check it is using the correct DDS system, simply run
+            <code>ros2 doctor --report</code>.
+          </p>
+
+          <h3>CycloneDDS Customisation</h3>
+
+          <p>
+            CycloneDDS allows the specification of the network interface on
+            which to send and receive ROS messages. This is done through the
+            environment variable
+            <code class="language-nohighlight">CYCLONEDDS_URI</code>.
+          </p>
+
+          <p>
+            We can create the file
+            <code class="language-nohighlight"
+              >~/cyclonedds_ws/cyclonedds.xml</code
+            >
+            to store our configuration. For example, if other ROS2 nodes were
+            only on the <code class="language-nohighlight">wlan0</code> and
+            <code class="language-nohighlight">eth0</code> interfaces, a
+            configuration file could force the use of those two interfaces.
+          </p>
+
+          <pre><code>&lt;!-- CycloneDDS Configuration File --&gt;
+&lt;CycloneDDS&gt;
+  &lt;Domain&gt;
+    &lt;General&gt;
+      &lt;Interfaces&gt;
+        &lt;NetworkInterface name="wlan0" priority="default" multicast="default" /&gt;
+        &lt;NetworkInterface name="eth0" priority="default" multicast="default" /&gt;
+      &lt;/Interfaces&gt;
+    &lt;/General&gt;
+  &lt;/Domain&gt;
+&lt;/CycloneDDS&gt;</code></pre>
+
+          <p>
+            The CycloneDDS environment variable can then be set to point to this
+            file. Similar to the ROS middleware variable, it is recommended to
+            set this in your
+            <code class="language-nohighlight">~/.bashrc</code> file.
+          </p>
+
+          <pre><code>echo "export CYCLONEDDS_URI=~/cyclonedds_ws/cyclonedds.xml" >> ~/.bashrc</code></pre>
+
+          <p>
+            The environment variable can also be set without creating separate
+            file by condensing the configuration into one line.
+          </p>
+
+          <pre><code>echo "export CYCLONEDDS_URI='&lt;CycloneDDS&gt;&lt;Domain&gt;&lt;General&gt;&lt;Interfaces&gt;&lt;NetworkInterface name=\"wlan0\" priority=\"default\" multicast=\"default\" /&gt;&lt;NetworkInterface name=\"eth0\" priority=\"default\" multicast=\"default\" /&gt;&lt;/Interfaces&gt;&lt;/General&gt;&lt;/Domain&gt;&lt;/CycloneDDS&gt;'" >> ~/.bashrc</code></pre>
         </div>
       </section>
     </div>
