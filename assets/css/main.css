@@ -2240,7 +2240,7 @@ button:active,
 #logo p {
   position: relative;
   display: block;
-  font-size: 0.6em;
+  font-size: 0.75em;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.25em;
   margin: 0.5em 0 0 0;
@@ -2250,6 +2250,24 @@ button:active,
   position: absolute;
   left: 0;
   top: 0;
+}
+
+#nav h1 {
+  position: relative;
+  color: #fff;
+  font-size: 1em;
+  line-height: 1em;
+  margin-bottom: 1em;
+  margin: 1.75em 1.5em 1.5em 1.5em;
+}
+
+#nav h2 {
+  position: relative;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-size: 1em;
+  line-height: 1em;
+  margin-right: 30px;
 }
 
 #nav ul {
