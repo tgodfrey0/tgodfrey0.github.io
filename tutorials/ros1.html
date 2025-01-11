@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="/assets/highlight/styles/default.min.css" />
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -101,6 +101,14 @@
           </header>
 
           <p>
+            <i
+              >ROS1 is EOL and no longer supported. This tutorial is included
+              for completeness but new projects should use
+              <a href="ros2.html">ROS2</a>.</i
+            >
+          </p>
+
+          <p>
             ROS1 (Robot Operating System 1) is an open-source framework designed
             to simplify the development of complex robotic systems. It provides
             a rich set of tools, libraries, and conventions that enable
@@ -124,7 +132,7 @@
             <h2>Basics</h2>
           </header>
 
-          <h3>1. ROS1 Architecture</h3>
+          <h3>ROS1 Architecture</h3>
           <p>
             ROS1 is built on a graph-based architecture where processing takes
             place in nodes that may receive, post, and multiplex sensor data,
@@ -159,7 +167,7 @@
             </li>
           </ul>
 
-          <h3>2. Setting Up Your Development Environment</h3>
+          <h3>Setting Up Your Development Environment</h3>
           <p>
             Before we start developing with ROS1, we need to set up our
             environment. We'll use ROS Noetic, which is designed for Ubuntu
@@ -182,7 +190,7 @@ source devel/setup.bash</code></pre>
           <pre><code>echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc</code></pre>
 
-          <h3>3. Creating a ROS Package</h3>
+          <h3>Creating a ROS Package</h3>
           <p>
             In ROS, software is organized in packages. Let's create a simple
             package:
@@ -195,19 +203,21 @@ catkin_create_pkg my_first_package rospy std_msgs</code></pre>
             (standard message types).
           </p>
 
-          <h3>4. Writing a Simple Publisher Node</h3>
+          <h3>Writing a Simple Publisher Node</h3>
           <p>
             Let's create a simple publisher node that sends a "Hello, ROS!"
-            message every second. Create a new file named `talker.py` in the
-            `scripts` directory of your package:
+            message every second. Create a new file named
+            <code class="language-nohighlight">talker.py</code> in the
+            <code class="language-nohighlight">scripts</code> directory of your
+            package:
           </p>
           <pre><code>mkdir ~/catkin_ws/src/my_first_package/scripts
 cd ~/catkin_ws/src/my_first_package/scripts
 touch talker.py
 chmod +x talker.py</code></pre>
           <p>
-            Open `talker.py` in your favorite text editor and add the following
-            code:
+            Open <code>talker.py</code> in your favorite text editor and add the
+            following code:
           </p>
           <pre><code>#!/usr/bin/env python3
 
@@ -230,14 +240,15 @@ if __name__ == '__main__':
   except rospy.ROSInterruptException:
     pass</code></pre>
 
-          <h3>5. Writing a Simple Subscriber Node</h3>
+          <h3>Writing a Simple Subscriber Node</h3>
           <p>
             Now, let's create a subscriber node that listens for messages on the
-            'chatter' topic. Create a new file named `listener.py`:
+            'chatter' topic. Create a new file named
+            <code class="language-nohighlight">listener.py</code>:
           </p>
           <pre><code>touch listener.py
 chmod +x listener.py</code></pre>
-          <p>Add the following code to `listener.py`:</p>
+          <p>Add the following code to <code>listener.py</code>:</p>
           <pre><code>#!/usr/bin/env python3
 
 import rospy
@@ -254,7 +265,7 @@ def listener():
 if __name__ == '__main__':
   listener()</code></pre>
 
-          <h3>6. Building and Running Your ROS Nodes</h3>
+          <h3>Building and Running Your ROS Nodes</h3>
           <p>
             Now that we have our nodes, let's build the package and run them:
           </p>
@@ -289,10 +300,12 @@ catkin_make</code></pre>
             <h2>Advanced Features</h2>
           </header>
 
-          <h3>1. Launch Files</h3>
+          <h3>Launch Files</h3>
           <p>
             Launch files allow you to start multiple nodes at once. Create a
-            file named `talker_listener.launch` in the `launch` directory of
+            file named
+            <code class="language-nohighlight">talker_listener.launch</code> in
+            the <code class="language-nohighlight">launch</code> directory of
             your package:
           </p>
           <pre><code>mkdir ~/catkin_ws/src/my_first_package/launch
@@ -329,7 +342,7 @@ if __name__ == '__main__':
           <p>Now you can launch both nodes with a single command:</p>
           <pre><code>roslaunch my_first_package talker_listener.launch</code></pre>
 
-          <h3>2. ROS Parameters</h3>
+          <h3>ROS Parameters</h3>
           <p>
             ROS parameters allow you to set and get global variables. Let's
             modify our talker to use a parameter for the publishing rate:
@@ -357,7 +370,7 @@ if __name__ == '__main__':
           <p>Now you can set the rate when launching the node:</p>
           <pre><code>rosrun my_first_package talker.py _rate:=2</code></pre>
 
-          <h3>3. ROS Services</h3>
+          <h3>ROS Services</h3>
           <p>
             Services allow request/reply interactions between nodes. Let's
             create a simple service that adds two numbers:
@@ -382,9 +395,10 @@ if __name__ == "__main__":
   add_two_ints_server()</code></pre>
           <p>
             You'll need to create a service definition file and modify your
-            <ilcode>package.xml</ilcode> and <ilcode>CMakeLists.txt</ilcode> to
-            use custom services. Below is an example of a service definition
-            file for the AddTwoInts service used in the previous example:
+            <code class="language-nohighlight">package.xml</code> and
+            <code class="language-nohighlight">CMakeLists.txt</code> to use
+            custom services. Below is an example of a service definition file
+            for the AddTwoInts service used in the previous example:
           </p>
           <pre><code># Request
 int64 a
@@ -395,8 +409,9 @@ int64 b
 int64 sum</code></pre>
           <p>
             To use this service, you need to update your
-            <ilcode>CMakeLists.txt</ilcode> and
-            <ilcode>package.xml</ilcode> files as follows:
+            <code class="language-nohighlight">CMakeLists.txt</code> and
+            <code class="language-nohighlight">package.xml</code> files as
+            follows:
           </p>
 
           <pre><code>find_package(catkin REQUIRED COMPONENTS
@@ -486,5 +501,24 @@ catkin_package(
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Highlight code blocks
+        document.querySelectorAll("pre code").forEach((el) => {
+          hljs.highlightElement(el);
+        });
+
+        // Highlight inline code
+        document.querySelectorAll(":not(pre) > code").forEach((el) => {
+          el.classList.add("hljs");
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   </body>
 </html>

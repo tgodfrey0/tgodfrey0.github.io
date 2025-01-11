@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="/assets/highlight/styles/default.min.css" />
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -125,7 +125,7 @@
             <h2>Basics</h2>
           </header>
 
-          <h3>1. ROS2 Architecture</h3>
+          <h3>ROS2 Architecture</h3>
           <p>
             ROS2 is built on a decentralized architecture where processing takes
             place in nodes. Key components include:
@@ -152,7 +152,7 @@
             </li>
           </ul>
 
-          <h3>2. Setting Up Your Development Environment</h3>
+          <h3>Setting Up Your Development Environment</h3>
           <p>
             Before starting with ROS2, set up your environment. We'll use ROS2
             Humble, compatible with Ubuntu 22.04.
@@ -174,7 +174,7 @@ source install/setup.bash</code></pre>
           <pre><code>echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
 source ~/.bashrc</code></pre>
 
-          <h3>3. Creating a ROS2 Package</h3>
+          <h3>Creating a ROS2 Package</h3>
           <p>
             In ROS2, software is organized in packages. Create a new package:
           </p>
@@ -184,11 +184,14 @@ ros2 pkg create --build-type ament_python my_first_package</code></pre>
             This creates a Python-based ROS2 package named "my_first_package."
           </p>
 
-          <h3>4. Writing a Simple Publisher Node</h3>
+          <h3>Writing a Simple Publisher Node</h3>
           <p>
             Create a publisher node that sends a "Hello, ROS2!" message every
             second. Edit the
-            <ilcode>my_first_package/publisher.py</ilcode> file:
+            <code class="language-nohighlight"
+              >my_first_package/publisher.py</code
+            >
+            file:
           </p>
           <pre><code>#!/usr/bin/env python3
 
@@ -219,11 +222,14 @@ def main(args=None):
 if __name__ == '__main__':
   main()</code></pre>
 
-          <h3>5. Writing a Simple Subscriber Node</h3>
+          <h3>Writing a Simple Subscriber Node</h3>
           <p>
             Create a subscriber node that listens for messages on the 'topic'
             channel. Edit the
-            <ilcode>my_first_package/subscriber.py</ilcode> file:
+            <code class="language-nohighlight"
+              >my_first_package/subscriber.py</code
+            >
+            file:
           </p>
           <pre><code>#!/usr/bin/env python3
 
@@ -254,7 +260,7 @@ def main(args=None):
 if __name__ == '__main__':
   main()</code></pre>
 
-          <h3>6. Building and Running Your ROS2 Nodes</h3>
+          <h3>Building and Running Your ROS2 Nodes</h3>
           <p>Build your package and run the nodes:</p>
           <pre><code>cd ~/ros2_ws
 colcon build</code></pre>
@@ -272,10 +278,11 @@ colcon build</code></pre>
             <h2>Advanced Features</h2>
           </header>
 
-          <h3>1. Launch Files</h3>
+          <h3>Launch Files</h3>
           <p>
             Launch files simplify starting multiple nodes. Create a launch file
-            in your package's <ilcode>launch</ilcode> directory:
+            in your package's
+            <code class="language-nohighlight">launch</code> directory:
           </p>
           <pre><code>mkdir ~/ros2_ws/src/my_first_package/launch
 nano ~/ros2_ws/src/my_first_package/launch/example.launch.py</code></pre>
@@ -299,7 +306,7 @@ def generate_launch_description():
           <p>Run the launch file:</p>
           <pre><code>ros2 launch my_first_package example.launch.py</code></pre>
 
-          <h3>2. Using Services in ROS2</h3>
+          <h3>Using Services in ROS2</h3>
           <p>
             Services in ROS2 allow for request-response communication between
             nodes. Here's how to create a service:
@@ -338,7 +345,7 @@ if __name__ == '__main__':
 
           <p>Run the service and a client to test it.</p>
 
-          <h3>3. Alternative ROS Middleware</h3>
+          <h3>Alternative ROS Middleware</h3>
           <p>
             ROS2 supports multiple DDS (Data Distribution Service)
             implementations. Some common DDS implementations include:
@@ -356,21 +363,24 @@ if __name__ == '__main__':
           </ul>
           <p>
             To switch middleware, set the
-            <ilcode>RMW_IMPLEMENTATION</ilcode> environment variable:
+            <code class="language-nohighlight">RMW_IMPLEMENTATION</code>
+            environment variable:
           </p>
           <pre><code>export RMW_IMPLEMENTATION=rmw_fastrtps_cpp</code></pre>
           <p>
             For more advanced middleware configurations, you can provide an XML
-            configuration file, such as <ilcode>cyclonedds.xml</ilcode>, to
+            configuration file, such as
+            <code class="language-nohighlight">cyclonedds.xml</code>, to
             customize settings like participant QoS, logging, and network
             settings. Place the configuration file in the working directory or
             specify its path with the
-            <ilcode>CYCLONEDDS_URI</ilcode> environment variable:
+            <code class="language-nohighlight">CYCLONEDDS_URI</code> environment
+            variable:
           </p>
           <pre><code>export CYCLONEDDS_URI=file:///path/to/cyclonedds.xml</code></pre>
           <p>
             Refer to the Cyclone DDS documentation for details on creating a
-            valid <ilcode>cyclonedds.xml</ilcode> file.
+            valid <code class="language-nohighlight">cyclonedds.xml</code> file.
           </p>
         </div>
       </section>
@@ -419,5 +429,24 @@ if __name__ == '__main__':
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Highlight code blocks
+        document.querySelectorAll("pre code").forEach((el) => {
+          hljs.highlightElement(el);
+        });
+
+        // Highlight inline code
+        document.querySelectorAll(":not(pre) > code").forEach((el) => {
+          el.classList.add("hljs");
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   </body>
 </html>

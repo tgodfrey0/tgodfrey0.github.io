@@ -2781,41 +2781,6 @@ button:active,
   }
 }
 
-pre {
-  background-color: #f4f4f4;
-  border: 1px solid #ddd;
-  border-left: 3px solid #f36d33;
-  color: #666;
-  page-break-inside: avoid;
-  font-family: monospace;
-  font-size: 15px;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  width: auto; /* Change from max-width to auto */
-  overflow: auto;
-  padding: 1em 1.5em;
-  display: block;
-  word-wrap: break-word;
-  text-align: left;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-code {
-  background-color: #f4f4f4;
-  border-radius: 0.3em;
-  padding: 4px 5px 6px;
-  white-space: nowrap;
-  text-align: left;
-  display: block;
-}
-
-pre code {
-  background: none;
-  white-space: pre;
-  overflow-x: scroll;
-}
-
 section.one {
   text-align: center;
 }
@@ -2863,14 +2828,35 @@ section.four p {
   text-align: left;
 }
 
-/* Inline Code Style */
-ilcode {
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  color: #d14;
+/* Shared styles for both block and inline code */
+pre code.hljs,
+:not(pre) > code.hljs {
   font-family: "Courier New", Courier, monospace;
-  font-size: 90%;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+/* Styles for code blocks */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  font-size: 14px;
+  border-radius: 4px;
+  border-left: 4px solid #3498db; /* Colored bar on the left */
+  margin-left: 0; /* Ensure left alignment */
+  line-height: 1.2; /* Reduced line height */
+  padding-top: 0.5em; /* Reduced top padding inside the block */
+  padding-bottom: 0.5em; /* Reduced bottom padding inside the block */
+  margin-bottom: 1.5em; /* Increased padding outside the block below */
+}
+
+/* Styles for inline code */
+:not(pre) > code.hljs {
+  display: inline;
   padding: 0.2em 0.4em;
-  white-space: nowrap;
+  border-radius: 3px;
+  white-space: normal;
+  color: #c7254e;
+  font-size: 85%;
 }

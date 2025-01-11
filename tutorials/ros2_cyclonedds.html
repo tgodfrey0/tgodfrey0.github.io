@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="/assets/css/main.css" />
-    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="stylesheet" href="/assets/highlight/styles/default.min.css" />
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -121,6 +121,53 @@
           </p>
         </div>
       </section>
+
+      <!-- Why use CycloneDDS -->
+      <section id="brief" class="three">
+        <div class="container">
+          <header>
+            <h2>Installation</h2>
+          </header>
+
+          <p>
+            CycloneDDS is not bundled with ROS2, so we must install it
+            separately.
+          </p>
+
+          <h3>Using a Package Manager</h3>
+
+          <p>
+            We can easily install the CycloneDDS ROS2 middleware using your
+            system's package manager. For systems using <code>apt</code>, we can
+            simply run. <code>def new_fun(i: int):</code>
+          </p>
+
+          <pre><code>sudo apt install ros-$ROS_DISTRO-rmw-cyclonedds-cpp</code></pre>
+
+          <p>
+            This should work in most cases, however, some production robots
+            require specific versions of the package.
+          </p>
+
+          <h3>Installing from Source</h3>
+
+          <p>
+            In order to install a specific version, we can install CycloneDDS
+            from source. First, ensure that ROS2 has <b>not</b> been sourced.
+          </p>
+
+          <pre><code># Create a CycloneDDS workspace and download sources
+mkdir -p ~/cyclonedds_ws/src && cd ~/cyclonedds_ws/src
+git clone https://github.com/ros2/rmw_cyclonedds -b $ROS_DISTRO
+git clone https://github.com/eclipse-cyclonedds/cyclonedds -b releases/0.10.x
+
+# Build the package
+cd ~/cyclonedds_ws
+colcon build --packages-select cyclonedds
+source /opt/ros/${ROS_DISTRO}/setup.bash
+colcon build</code></pre>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
@@ -138,5 +185,24 @@
     <script src="/assets/js/browser.min.js"></script>
     <script src="/assets/js/breakpoints.min.js"></script>
     <script src="/assets/js/util.js"></script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="/assets/highlight/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        // Highlight code blocks
+        document.querySelectorAll("pre code").forEach((el) => {
+          hljs.highlightElement(el);
+        });
+
+        // Highlight inline code
+        document.querySelectorAll(":not(pre) > code").forEach((el) => {
+          el.classList.add("hljs");
+          hljs.highlightElement(el);
+        });
+      });
+    </script>
   </body>
 </html>
