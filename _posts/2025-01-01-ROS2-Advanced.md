@@ -9,7 +9,7 @@ This tutorial will briefly introduce you to the more advanced concepts of ROS2 s
 
 ---
 
-# Launch Files
+## Launch Files
 
 Launch files simplify starting multiple nodes. Create a launch file in your package's `launch` directory:
 
@@ -45,11 +45,11 @@ Run the launch file:
 ros2 launch my_first_package example.launch.py
 ```
 
-# Using Services in ROS2
+## Using Services in ROS2
 
 Services in ROS2 allow for request-response communication between nodes. Here's how to create a service:
 
-## Python
+### Python
 
 ```bash
 ros2 interface show example_interfaces/srv/AddTwoInts
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     main()
 ```
 
-## C++
+### C++
 
 ```cpp
 #include <rclcpp/rclcpp.hpp>
@@ -122,7 +122,7 @@ int main(int argc, char * argv[])
 }
 ```
 
-# Alternative ROS Middleware
+## Alternative ROS Middleware
 
 ROS2 supports multiple DDS (Data Distribution Service) implementations. Some common DDS implementations include:
 

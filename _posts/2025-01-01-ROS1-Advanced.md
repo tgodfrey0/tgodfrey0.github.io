@@ -9,11 +9,11 @@ This tutorial will briefly introduce you to the more advanced concepts of ROS1 s
 
 ---
 
-# Launch Files
+## Launch Files
 
 Launch files allow you to start multiple nodes at once. Create a file named `talker_listener.launch` in the `launch` directory of your package:
 
-## Python Example
+### Python Example
 
 ```bash
 mkdir ~/catkin_ws/src/my_first_package/launch
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     launch()
 ```
 
-## XML Example
+### XML Example
 
 ```xml
 <launch>
@@ -70,11 +70,11 @@ Run the launch file:
 roslaunch my_first_package talker_listener.launch
 ```
 
-# Parameter Servers
+## Parameter Servers
 
 Parameter servers allow nodes to store and retrieve global parameters. Modify the talker node to use a parameter for the publishing rate:
 
-## Python Example
+### Python Example
 
 ```python
 #!/usr/bin/env python3
@@ -85,7 +85,7 @@ from std_msgs.msg import String
 def talker():
     pub = rospy.Publisher('chatter', String, queue_size=10)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(rospy.get_param('~rate', 1))  # Default to 1 Hz if not specified
+    rate = rospy.Rate(rospy.get_param('~rate', 1))  ## Default to 1 Hz if not specified
     while not rospy.is_shutdown():
         hello_str = "Hello, ROS! %s" % rospy.get_time()
         rospy.loginfo(hello_str)
@@ -105,11 +105,11 @@ Run the talker with a parameter:
 rosrun my_first_package talker.py _rate:=2
 ```
 
-# ROS Services
+## ROS Services
 
 Services allow request/reply interactions between nodes. Create a simple service that adds two numbers:
 
-## Python Example
+### Python Example
 
 ```python
 #!/usr/bin/env python3
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     add_two_ints_server()
 ```
 
-## Service Definition File
+### Service Definition File
 
 Create `srv/AddTwoInts.srv`:
 
