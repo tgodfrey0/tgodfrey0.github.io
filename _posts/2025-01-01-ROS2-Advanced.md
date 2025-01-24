@@ -7,6 +7,10 @@ tags: [ros] # TAG names should always be lowercase
 
 This tutorial will briefly introduce you to the more advanced concepts of ROS2 such as launch file, services and alternative middleware implementations.
 
+## Recommended Pre-Reading
+
+Before reading this, you'll likely want to read the [ROS2 Basics](/posts/ROS2-Basics/).
+
 ---
 
 ## Launch Files

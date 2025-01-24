@@ -7,6 +7,12 @@ tags: [ros] # TAG names should always be lowercase
 
 A brief discussion on using the CycloneDDS middleware with ROS2.
 
+## Recommended Pre-Reading
+
+Before reading this, you'll likely want to read the guides on [ROS2 Basics](/posts/ROS2-Basics/) and [ROS2 Advanced](/posts/ROS2-Advanced/).
+
+---
+
 ## Brief
 
 ROS2 supports multiple DDS (Data Distribution Service) implementations. Some common DDS implementations include:

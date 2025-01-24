@@ -7,6 +7,10 @@ tags: [ros] # TAG names should always be lowercase
 
 This tutorial will briefly introduce you to the more advanced concepts of ROS1 such as launch file, parameter servers and services.
 
+## Recommended Pre-Reading
+
+Before reading this, you'll likely want to read the [ROS1 Basics](/posts/ROS1-Basics/).
+
 ---
 
 ## Launch Files
