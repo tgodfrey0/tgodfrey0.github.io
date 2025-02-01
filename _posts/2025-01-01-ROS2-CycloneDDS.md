@@ -114,6 +114,16 @@ The environment variable can also be set without creating a separate file by con
 echo "export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces><NetworkInterface name="wlan0" priority="default" multicast="default" /><NetworkInterface name="eth0" priority="default" multicast="default" /></Interfaces></General></Domain></CycloneDDS>'" >> ~/.bashrc
 ```
 
+## Running in a Container
+
+Sometimes you may run into issues with CycloneDDS running in a container, e.g. Docker or Podman. On some systems, when running ROS commands with the `rmw_cyclonedds_cpp` middleware, the command hangs and never returns. To fix this, we must disable multicast in the `cyclonedds.xml` file.
+
+In the CycloneDDS configuration file (or environment variable), add the following tag inside the `<General>` tags.
+
+```xml
+<AllowMulticast>spdp</AllowMulticast>
+```
+
 ## Additional Resources
 
 - [ROS2 Alternative Middleware](https://docs.ros.org/en/rolling/Concepts/Intermediate/About-Different-Middleware-Vendors.html) - The official ROS2 resources on changing the middleware provider.
