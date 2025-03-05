@@ -11,7 +11,7 @@ For a definitive list of papers, please visit the [Soorati Lab site](https://soo
 
 ## MARLIN
 
-Multi-Agent Reinforcement Learning Guided-by Language-Based Inter-Robot Negotiation (MARLIN) was a project exploring the use of language models to reduce the training time of multi-robot systems. This is currently published as a pre-print on Arxiv and can be found [here](https://arxiv.org/abs/2410.14383). We integrated OpenAI GPT LLMs, Google's Gemini models, and several Llama models. The reinforcement learning code used the [Ray](https://ray.io) library and was eventually deployed on two TurtleBot3 robotic platforms using ROS2 Humble. The GitHub repository can be found [here](https://github.com/tgodfrey0/MARLIN/).
+Multi-Agent Reinforcement Learning Guided-by Language-Based Inter-Robot Negotiation (MARLIN) was a project exploring the use of language models to reduce the training time of multi-robot systems. This is currently published as a pre-print on Arxiv and can be found [here](https://arxiv.org/abs/2410.14383). We integrated OpenAI GPT LLMs, Google's Gemini models, and several Llama models. The reinforcement learning code used the [Ray](https://ray.io) library and was eventually deployed on two TurtleBot3 robotic platforms using ROS2 Humble. The GitHub repository can be found [here](https://github.com/SooratiLab/MARLIN/).
 
 ## SwarmNet
 
