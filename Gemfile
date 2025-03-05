@@ -12,3 +12,6 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
+
+gem 'csv', '~> 3.3.2'
+gem 'base64', '~> 0.2.0'
