@@ -10,7 +10,7 @@ Forward kinematics (FK) allow us to determine the position of the end-effector b
 
 ## Recommended Pre-Reading
 
-Before reading this, you should have some familiarity with matrices and algebra, and you should read the discuss on [transformations](/posts/Transformations).
+Before reading this, you should have some familiarity with matrices and algebra, and you should read the discuss on [transformations](/posts/Transformations/).
 
 ---
 
