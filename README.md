@@ -8,14 +8,17 @@
 - [x] Transformation
 - [x] Forward Kinematics
 - [x] Inverse Kinematics
+- [x] ROS2 Rust
 - [ ] Gaussian Filters (EKF, UKF)
-- [ ] ROS2 Rust
 - [ ] Ardupilot-ROS2
 - [ ] ROS2 for Multi-Robot Systems/Swarms
 - [ ] CAD
 - [ ] ROS2 in Containers
 - [ ] ROS2 with PyTorch
 - [ ] Robot Localisation
+- [ ] Trajectory Generation
+- [ ] Jacobians
+- [ ] End-Effectors
 
 # Template
 
