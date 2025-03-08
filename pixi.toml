@@ -9,7 +9,8 @@ version = "0.1.0"
 clean = "bundle exec jekyll clean"
 install_gem = "gem install jekyll bundler"
 install_deps = { cmd = "bundle", depends-on = ["install_gem"] }
-start = { cmd = "bundle exec jekyll s", depends-on = ["install_deps"] }
+install = { depends-on = ["install_gem", "install_deps"] }
+start = { cmd = "bundle exec jekyll s" }
 
 [dependencies]
 ruby = ">=3.4.2,<4"
