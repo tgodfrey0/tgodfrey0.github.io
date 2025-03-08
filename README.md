@@ -7,7 +7,7 @@
 - [x] ROS2 with CycloneDDS
 - [x] Transformation
 - [x] Forward Kinematics
-- [ ] Inverse Kinematics
+- [x] Inverse Kinematics
 - [ ] Gaussian Filters (EKF, UKF)
 - [ ] ROS2 Rust
 - [ ] Ardupilot-ROS2
