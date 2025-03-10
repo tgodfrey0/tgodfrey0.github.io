@@ -73,8 +73,6 @@ packages:
   md5: c87e146f5b685672d4aa6b527c6d3b5e
   depends:
   - binutils_impl_linux-64 2.43 h4bf12b8_4
-  arch: x86_64
-  platform: linux
   license: GPL-3.0-only
   license_family: GPL
   size: 35657
@@ -116,8 +114,6 @@ packages:
   - binutils_linux-64
   - gcc_impl_linux-64 14.2.0.*
   - sysroot_linux-64
-  arch: x86_64
-  platform: linux
   license: BSD-3-Clause
   license_family: BSD
   size: 32292
@@ -149,8 +145,6 @@ packages:
   - libstdcxx-devel_linux-64 14.2.0 h9c4974d_102
   - sysroot_linux-64
   - tzdata
-  arch: x86_64
-  platform: linux
   license: GPL-3.0-only WITH GCC-exception-3.1
   license_family: GPL
   size: 14611960
@@ -163,8 +157,6 @@ packages:
   - gcc_linux-64 14.2.0 h5910c8f_8
   - gxx_impl_linux-64 14.2.0.*
   - sysroot_linux-64
-  arch: x86_64
-  platform: linux
   license: BSD-3-Clause
   license_family: BSD
   size: 30690
