@@ -1,0 +1,32 @@
+---
+title: Conversational Language Models for Human-in-the-Loop Multi-Robot Coordination
+authors:
+- William Hunt
+- Toby Godfrey
+- Mohammad D. Soorati
+date: '2024-01-01'
+publishDate: '2025-07-09T09:42:32.071266Z'
+publication_types:
+- paper-conference
+publication: '*Proceedings of the 23rd International Conference on Autonomous Agents
+  and Multiagent Systems*'
+abstract: With the increasing prevalence and diversity of robots interacting in the
+  real world, there is need for flexible, on-the-fly planning and cooperation. Large
+  Language Models are starting to be explored in a multimodal setup for communication,
+  coordination, and planning in robotics. Existing approaches generally use a single
+  agent building a plan, or have multiple homogeneous agents coordinating for a simple
+  task. We present a decentralised, dialogical approach in which a team of agents
+  with different abilities plans solutions through peer-to-peer and human-robot discussion.
+  We suggest that argument-style dialogues are an effective way to facilitate adaptive
+  use of each agent's abilities within a cooperative team. Two robots discuss how
+  to solve a cleaning problem set by a human, define roles, and agree on paths they
+  each take. Each step can be interrupted by a human advisor and agents check their
+  plans with the human. Agents then execute this plan in the real world, collecting
+  rubbish from people in each room. Our implementation uses text at every step, maintaining
+  transparency and effective human-multi-robot interaction.
+tags:
+- LLMs/FoundationModels
+- MAS/MRS/Swarm
+- notion
+- UGVs
+---
